@@ -27,7 +27,7 @@ body {
 
 /* ===== ヘッダー & ナビゲーション ===== */
 .header {
-    background-color: var(--color-primary);
+    background-color: var(--color-bg-main);
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
@@ -388,4 +388,5 @@ body {
 
 .mb-2 {
     margin-bottom: 2rem;
+
 }
