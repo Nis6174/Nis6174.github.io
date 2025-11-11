@@ -6,7 +6,7 @@
 }
 
 :root {
-    --color-primary: #00037I;
+    --color-primary: #000371;
     --color-bg-main: #C4C4C4;
     --color-button: #E4E4E4;
     --color-sub-bg: #3A7979;
@@ -389,3 +389,4 @@ body {
 .mb-2 {
     margin-bottom: 2rem;
 }
+
