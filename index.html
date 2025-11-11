@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="マルウェア解析と情報セキュリティに関する技術ブログ">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:;">
+    <title>Malware Analysis Blog</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Malware Analysis Blog</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="posts/index.html" class="nav-link">Posts</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <section class="hero">
+            <h1 class="hero-title">マルウェア解析 & セキュリティ</h1>
+            <p class="hero-description">
+                マルウェアの動作分析、リバースエンジニアリング、セキュリティ研究の記録
+            </p>
+        </section>
+
+        <section class="featured-posts">
+            <h2 class="section-title">最新記事</h2>
+            <div class="posts-grid" id="latestPosts">
+                <!-- JavaScriptで動的に生成 -->
+            </div>
+            <div class="view-all">
+                <a href="posts/index.html" class="btn-primary">すべての記事を見る</a>
+            </div>
+        </section>
+
+        <section class="categories">
+            <h2 class="section-title">カテゴリー</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <h3>マルウェア解析</h3>
+                    <p>実際のマルウェアサンプルの静的・動的解析レポート</p>
+                </div>
+                <div class="category-card">
+                    <h3>リバースエンジニアリング</h3>
+                    <p>バイナリ解析、難読化解除、アンパック技術</p>
+                </div>
+                <div class="category-card">
+                    <h3>セキュリティツール</h3>
+                    <p>解析ツールの使い方、スクリプト作成</p>
+                </div>
+                <div class="category-card">
+                    <h3>脅威インテリジェンス</h3>
+                    <p>最新の脅威動向、攻撃手法の研究</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 Malware Analysis Blog. All rights reserved.</p>
+            <p class="footer-note">このブログの内容は教育・研究目的のみに使用してください。</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

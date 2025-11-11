@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Emotetマルウェアの静的解析手法を詳しく解説">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:;">
+    <title>Emotetマルウェアの静的解析入門 | Malware Analysis Blog</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="../index.html" class="logo">Malware Analysis Blog</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html" class="nav-link active">Posts</a></li>
+                <li><a href="../about.html" class="nav-link">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="article-container">
+            <header class="article-header">
+                <h1 class="article-title">Emotetマルウェアの静的解析入門</h1>
+                <div class="article-meta">
+                    <time datetime="2024-11-10">2024年11月10日</time>
+                    <div class="post-tags mt-2">
+                        <span class="tag">マルウェア解析</span>
+                        <span class="tag">Emotet</span>
+                        <span class="tag">静的解析</span>
+                    </div>
+                </div>
+            </header>
+
+            <article class="article-content">
+                <h2>はじめに</h2>
+                <p>
+                    Emotetは、2014年に初めて発見されたバンキング型トロイの木馬で、
+                    その後進化を続け、世界中で最も危険なマルウェアの1つとなりました。
+                    本記事では、Emotetのサンプルを静的解析する手法について解説します。
+                </p>
+
+                <h2>準備するツール</h2>
+                <p>静的解析に必要なツールは以下の通りです：</p>
+                <ul>
+                    <li><strong>PEStudio</strong> - PE ファイルの基本情報確認</li>
+                    <li><strong>IDA Pro / Ghidra</strong> - 逆アセンブラ</li>
+                    <li><strong>Detect It Easy</strong> - パッカー・コンパイラ検出</li>
+                    <li><strong>PE-bear</strong> - PE 構造の詳細確認</li>
+                </ul>
+
+                <h2>解析環境の構築</h2>
+                <p>
+                    マルウェア解析は必ず隔離された環境で実施してください。
+                    仮想マシン（VMware、VirtualBoxなど）を使用し、ホストOSとネットワークを分離します。
+                </p>
+
+                <h3>推奨される環境設定</h3>
+                <ul>
+                    <li>スナップショット機能の活用</li>
+                    <li>ネットワークの完全隔離またはインターネット接続の制御</li>
+                    <li>共有フォルダの無効化</li>
+                    <li>VM検出対策の実施</li>
+                </ul>
+
+                <h2>基本情報の収集</h2>
+                <p>
+                    まず、サンプルファイルの基本情報を収集します。
+                    ハッシュ値の取得、ファイルサイズ、コンパイル日時などの情報を記録しておきます。
+                </p>
+
+                <h3>ハッシュ値の計算</h3>
+                <pre><code># PowerShellでの例
+Get-FileHash -Algorithm SHA256 emotet_sample.exe
+Get-FileHash -Algorithm MD5 emotet_sample.exe</code></pre>
+
+                <h2>PE構造の確認</h2>
+                <p>
+                    PEStudioやPE-bearを使用して、PEヘッダーの情報を確認します。
+                    特に以下の項目に注目します：
+                </p>
+                <ul>
+                    <li>インポートテーブル - 使用されているAPI関数</li>
+                    <li>エクスポートテーブル - DLLの場合は公開関数</li>
+                    <li>リソースセクション - 埋め込まれたデータ</li>
+                    <li>セクションの特性 - 実行可能、書き込み可能など</li>
+                </ul>
+
+                <h2>難読化とパッキングの確認</h2>
+                <p>
+                    Emotetは一般的にパッキングや難読化が施されています。
+                    Detect It Easyなどのツールを使用して、使用されているパッカーを特定します。
+                </p>
+
+                <h2>文字列解析</h2>
+                <p>
+                    実行可能ファイル内の文字列を抽出することで、
+                    C&Cサーバーのアドレス、使用されているプロトコル、
+                    デバッグメッセージなどの有用な情報が得られることがあります。
+                </p>
+
+                <h2>まとめ</h2>
+                <p>
+                    静的解析は、マルウェアを実行せずにその動作を理解する重要な手法です。
+                    Emotetのような高度なマルウェアの場合、静的解析だけでは全容を把握できないこともありますが、
+                    動的解析の前準備として非常に重要なステップとなります。
+                </p>
+                <p>
+                    次回は、実際にEmotetサンプルを動的解析環境で実行し、
+                    その振る舞いを詳しく観察する手法について解説します。
+                </p>
+
+                <h2>参考資料</h2>
+                <ul>
+                    <li>CISA Emotet Malware Analysis Report</li>
+                    <li>JPCERT/CC マルウェア Emotet の解析</li>
+                    <li>Malware Analysis Course (Practical Malware Analysis)</li>
+                </ul>
+            </article>
+
+            <div class="text-center mt-2">
+                <a href="index.html" class="btn-primary">記事一覧に戻る</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 Malware Analysis Blog. All rights reserved.</p>
+            <p class="footer-note">このブログの内容は教育・研究目的のみに使用してください。</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
