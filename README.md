@@ -1,5 +1,3 @@
-# Nis6174.github.io
-
 # About This Blog
 
 This blog is a personal technical blog focused on vulnerability analysis,
