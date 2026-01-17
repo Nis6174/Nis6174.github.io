@@ -1,3 +1,5 @@
+[English](README.md) | [日本語](README_ja.md)
+
 # About This Blog
 
 This blog is a personal technical blog focused on vulnerability analysis,
