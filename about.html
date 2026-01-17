@@ -24,54 +24,130 @@
         <div class="article-container">
             <section class="article-header">
                 <h1 class="article-title">About This Blog</h1>
+                <p>
+                    <a href="#english">English</a> | <a href="#japanese">日本語</a>
+                </p>
             </section>
 
             <article class="article-content">
-                <h2>このブログについて</h2>
-                <p>
-                    このブログは、マルウェア解析とサイバーセキュリティに関する技術情報を記録・共有する目的で作成されました。
-                    実際のマルウェアサンプルの解析結果、リバースエンジニアリング技術、セキュリティツールの使い方など、
-                    実践的な内容を中心に発信しています。
-                </p>
 
-                <h2>扱うトピック</h2>
-                <ul>
-                    <li><strong>マルウェア解析</strong>: 実際のマルウェアサンプルの静的・動的解析</li>
-                    <li><strong>リバースエンジニアリング</strong>: バイナリ解析、難読化解除、アンパック技術</li>
-                    <li><strong>セキュリティツール</strong>: IDA Pro、Ghidra、x64dbgなどのツール活用法</li>
-                    <li><strong>脅威インテリジェンス</strong>: 最新の脅威動向と攻撃手法の研究</li>
-                </ul>
+                <!-- English Section -->
+                <section id="english">
+                    <h2>About This Blog</h2>
+                    <p>
+                        This blog is a personal technical blog created to document and share
+                        research and verification results related to malware analysis,
+                        vulnerability research, and cybersecurity in general.
+                    </p>
+                    <p>
+                        The analyses presented here are primarily conducted using intentionally
+                        vulnerable test environments or samples obtained for analysis purposes.
+                        Techniques such as static analysis, dynamic analysis, and reverse engineering
+                        are used to deepen understanding of security mechanisms and threats.
+                    </p>
 
-                <h2>免責事項</h2>
-                <p>
-                    このブログで公開される情報は、教育および研究目的のみに使用されることを意図しています。
-                    掲載されている内容を不正な目的で使用することは固く禁じられています。
-                    著者は、本ブログの情報を使用したことによる直接的または間接的な損害について、
-                    一切の責任を負いません。
-                </p>
+                    <h2>Testing Environment</h2>
+                    <p>
+                        All analysis and verification described on this blog are performed
+                        in controlled and isolated environments, such as local virtual machines
+                        or network-segregated test setups.
+                    </p>
+                    <p>
+                        No testing or analysis is conducted against real-world systems,
+                        production environments, or targets without explicit authorization.
+                    </p>
 
-                <h2>セキュリティとプライバシー</h2>
-                <p>
-                    このブログは以下のセキュリティ対策を実装しています：
-                </p>
-                <ul>
-                    <li>Content Security Policy (CSP) による XSS 攻撃対策</li>
-                    <li>HTTPS による通信の暗号化（GitHub Pages）</li>
-                    <li>外部リンクへの適切な属性設定</li>
-                    <li>ユーザー入力のサニタイゼーション</li>
-                </ul>
+                    <h2>Ethical Considerations and Disclaimer</h2>
+                    <p>
+                        The information provided on this blog is intended for educational
+                        and research purposes only. The content aims to improve understanding
+                        of vulnerabilities and attack techniques from a defensive and analytical perspective.
+                    </p>
+                    <p>
+                        The use of this information for malicious purposes or against
+                        unauthorized targets is strongly discouraged.
+                        The author assumes no responsibility for any damages resulting from
+                        the use of the information provided on this blog.
+                    </p>
+                    <p>
+                        If you are unsure whether an action is permitted, do not perform it.
+                    </p>
 
-                <h2>Contact</h2>
-                <p>
-                    質問やフィードバックがある場合は、GitHubのIssuesセクションからお気軽にお問い合わせください。
-                </p>
+                    <h2>Security and Privacy</h2>
+                    <ul>
+                        <li>Use of Content Security Policy (CSP) to mitigate XSS risks</li>
+                        <li>HTTPS-enabled encrypted communication (GitHub Pages)</li>
+                        <li>Appropriate attributes applied to external links</li>
+                        <li>Minimization of features involving user input</li>
+                    </ul>
+
+                    <h2>Contact</h2>
+                    <p>
+                        For questions or feedback, please contact me via the Issues section
+                        of the GitHub repository.
+                    </p>
+                </section>
+
+                <hr>
+
+                <!-- Japanese Section -->
+                <section id="japanese">
+                    <h2>このブログについて</h2>
+                    <p>
+                        このブログは、マルウェア解析、脆弱性解析、サイバーセキュリティ全般に関する
+                        技術的な調査・検証結果を記録・共有することを目的とした個人ブログです。
+                    </p>
+                    <p>
+                        主に、意図的に脆弱性を含む検証用環境や、分析を目的として取得したサンプルを対象に、
+                        静的解析・動的解析・リバースエンジニアリングなどの手法を用いた調査を行っています。
+                        本ブログは、学習および研究を通じてセキュリティ技術への理解を深めることを目的としています。
+                    </p>
+
+                    <h2>検証環境について</h2>
+                    <p>
+                        本ブログで紹介する解析および検証は、すべて
+                        ローカルの仮想マシンやネットワーク的に分離された検証環境において実施しています。
+                    </p>
+                    <p>
+                        実在するシステム、本番環境、または明示的な許可のない対象に対する
+                        テストや解析は一切行っていません。
+                    </p>
+
+                    <h2>倫理的配慮・免責事項</h2>
+                    <p>
+                        本ブログに掲載されている情報は、教育および研究目的での利用を想定しています。
+                        脆弱性や攻撃手法の理解を深め、防御や検知に役立てることを意図した内容です。
+                    </p>
+                    <p>
+                        掲載情報を不正な目的や、許可のない対象への攻撃に使用することは推奨されません。
+                        本ブログの情報を利用したことによって生じたいかなる損害についても、
+                        著者は一切の責任を負いません。
+                    </p>
+                    <p>
+                        行為の可否が不明な場合は、実行しないでください。
+                    </p>
+
+                    <h2>セキュリティとプライバシー</h2>
+                    <ul>
+                        <li>Content Security Policy（CSP）による XSS 対策</li>
+                        <li>HTTPS による通信の暗号化（GitHub Pages）</li>
+                        <li>外部リンクに対する適切な属性設定</li>
+                        <li>ユーザー入力を伴う機能の最小化</li>
+                    </ul>
+
+                    <h2>Contact</h2>
+                    <p>
+                        ご質問や指摘がある場合は、GitHub リポジトリの Issues からご連絡ください。
+                    </p>
+                </section>
+
             </article>
         </div>
     </main>
 
     <footer class="footer">
         <div class="footer-container">
-            <p>&copy; 2024 Malware Analysis Blog. All rights reserved.</p>
+            <p>&copy; 2025 Malware Analysis Blog. All rights reserved.</p>
             <p class="footer-note">このブログの内容は教育・研究目的のみに使用してください。</p>
         </div>
     </footer>
