@@ -23,11 +23,9 @@
     <main class="main-container">
         <div class="article-container">
             <section class="article-header">
-                <h1 class="article-title">About This Blog</h1>
-                <div class="lang-switch">
-                    <a href="#english">English</a>
-                    <span>|</span>
-                    <a href="#japanese">日本語</a>
+                <div class="header-flex">
+                    <h1 class="article-title">About This Blog</h1>
+                    <button id="langToggle" class="lang-toggle-btn">日本語</button>
                 </div>
             </section>
 
@@ -90,10 +88,8 @@
                     </p>
                 </section>
 
-                <hr class="section-divider">
-
                 <!-- Japanese Section -->
-                <section id="japanese" class="content-section">
+                <section id="japanese" class="content-section" style="display: none;">
                     <h2>このブログについて</h2>
                     <p>
                         このブログは、マルウェア解析、脆弱性解析、サイバーセキュリティ全般に関する
@@ -155,5 +151,26 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script>
+        // 言語切り替え機能
+        const langToggle = document.getElementById('langToggle');
+        const englishSection = document.getElementById('english');
+        const japaneseSection = document.getElementById('japanese');
+        let currentLang = 'en';
+
+        langToggle.addEventListener('click', function() {
+            if (currentLang === 'en') {
+                englishSection.style.display = 'none';
+                japaneseSection.style.display = 'block';
+                langToggle.textContent = 'English';
+                currentLang = 'ja';
+            } else {
+                englishSection.style.display = 'block';
+                japaneseSection.style.display = 'none';
+                langToggle.textContent = '日本語';
+                currentLang = 'en';
+            }
+        });
+    </script>
 </body>
 </html>
