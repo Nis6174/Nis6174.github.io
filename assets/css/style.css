@@ -390,4 +390,69 @@ body {
     margin-bottom: 2rem;
 }
 
+/* ===== About ページ専用スタイル ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+.lang-switch {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1rem;
+    background-color: var(--color-button);
+    border-radius: 6px;
+}
+
+.lang-switch a {
+    color: var(--color-sub-bg);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.lang-switch a:hover {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+
+.lang-switch span {
+    color: var(--color-text-gray);
+    margin: 0 0.5rem;
+}
+
+.content-section {
+    margin-bottom: 3rem;
+}
+
+.content-section h2 {
+    color: var(--color-primary);
+    font-size: 1.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-sub-bg);
+}
+
+.content-section h2:first-child {
+    margin-top: 0;
+}
+
+.content-section ul {
+    margin-left: 2rem;
+    margin-bottom: 1.25rem;
+}
+
+.content-section li {
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+}
+
+.section-divider {
+    margin: 4rem 0;
+    border: none;
+    border-top: 2px solid var(--color-sub-bg);
+    opacity: 0.3;
+}
 
