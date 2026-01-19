@@ -173,3 +173,31 @@ if (typeof module !== 'undefined' && module.exports) {
         posts
     };
 }
+
+// about page
+// 言語切り替え機能（DOMContentLoaded後に実行）
+document.addEventListener('DOMContentLoaded', function() {
+    const langToggle = document.getElementById('langToggle');
+    const englishSection = document.getElementById('english');
+    const japaneseSection = document.getElementById('japanese');
+    let currentLang = 'en';
+
+    if (langToggle) {
+        langToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            if (currentLang === 'en') {
+                englishSection.style.display = 'none';
+                japaneseSection.style.display = 'block';
+                langToggle.textContent = 'English';
+                currentLang = 'ja';
+            } else {
+                englishSection.style.display = 'block';
+                japaneseSection.style.display = 'none';
+                langToggle.textContent = '日本語';
+                currentLang = 'en';
+            }
+        });
+    }
+});
