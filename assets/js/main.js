@@ -5,32 +5,17 @@ function sanitizeHTML(str) {
     return temp.innerHTML;
 }
 
-// 記事データ（実際の運用では別ファイルから読み込むか、動的に生成）
+// 記事データの定義（実際のブログ記事を追加していく）
 const posts = [
     {
         id: 1,
-        title: "Emotetマルウェアの静的解析入門",
-        date: "2024-11-10",
-        excerpt: "Emotetマルウェアのサンプルを静的解析ツールを使用して分析し、その動作原理と感染メカニズムを解説します。",
-        tags: ["マルウェア解析", "Emotet", "静的解析"],
-        filename: "2024-11-10-emotet-analysis.html"
-    },
-    {
-        id: 2,
-        title: "IDA Proを使ったバイナリ解析テクニック",
-        date: "2024-11-05",
-        excerpt: "IDA Proの基本的な使い方から、効率的な解析のためのプラグイン活用まで、実践的なテクニックを紹介します。",
-        tags: ["リバースエンジニアリング", "IDA Pro", "ツール"],
-        filename: "2024-11-05-ida-pro-techniques.html"
-    },
-    {
-        id: 3,
-        title: "ランサムウェアの暗号化アルゴリズム分析",
-        date: "2024-10-28",
-        excerpt: "最近のランサムウェアが使用する暗号化手法を解析し、その脅威と対策について考察します。",
-        tags: ["マルウェア解析", "ランサムウェア", "暗号化"],
-        filename: "2024-10-28-ransomware-crypto.html"
+        title: "React2Shell (CVE-2025-55182) 脆弱性検証記録",
+        date: "2025-12-16",
+        excerpt: "React Server Componentsの重大な脆弱性React2Shellについて、隔離環境での検証結果と独自テストの結果をまとめました。",
+        tags: ["脆弱性解析", "CVE-2025-55182", "React"],
+        filename: "2025-12-16-react2shell-cve-2025-55182.html"
     }
+    // 新しい記事をここに追加していく
 ];
 
 // トップページの最新記事表示
@@ -38,8 +23,11 @@ function displayLatestPosts() {
     const container = document.getElementById('latestPosts');
     if (!container) return;
 
+    // 日付順にソート（新しい順）
+    const sortedPosts = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+    
     // 最新3件を表示
-    const latestPosts = posts.slice(0, 3);
+    const latestPosts = sortedPosts.slice(0, 3);
     
     latestPosts.forEach(post => {
         const postCard = createPostCard(post);
@@ -52,7 +40,10 @@ function displayAllPosts() {
     const container = document.getElementById('allPosts');
     if (!container) return;
 
-    posts.forEach(post => {
+    // 日付順にソート（新しい順）
+    const sortedPosts = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    sortedPosts.forEach(post => {
         const postCard = createPostCard(post);
         container.appendChild(postCard);
     });
