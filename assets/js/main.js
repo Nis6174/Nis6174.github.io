@@ -1,3 +1,9 @@
+// サイトのルートURLを main.js の位置から求める
+// main.js は assets/js/ 配下にあるため、2階層上がサイトルートになる
+// どのページ（index.html / posts/index.html など）から読み込んでも同じ結果になる
+// ※ document.currentScript はスクリプトの初回実行中のみ参照できるため、ここで取得しておく
+const SITE_ROOT = new URL('../../', document.currentScript.src);
+
 // セキュリティ: XSS対策のためのサニタイズ関数
 function sanitizeHTML(str) {
     const temp = document.createElement('div');
@@ -13,7 +19,7 @@ const posts = [
         date: "2025-12-16",
         excerpt: "React Server Componentsの重大な脆弱性React2Shellについて、隔離環境での検証結果と独自テストの結果をまとめました。",
         tags: ["脆弱性解析", "CVE-2025-55182", "React"],
-        filename: "posts/2025-12-16-react2shell-cve-2025-55182.html"
+        filename: "2025-12-16-react2shell-cve-2025-55182.html"
     }
     // 新しい記事をここに追加していく
 ];
@@ -55,7 +61,7 @@ function createPostCard(post) {
     article.className = 'post-card';
     
     const link = document.createElement('a');
-    link.href = `posts/${sanitizeHTML(post.filename)}`;
+    link.href = new URL(`posts/${encodeURIComponent(post.filename)}`, SITE_ROOT).href;
     link.style.textDecoration = 'none';
     link.style.color = 'inherit';
     
