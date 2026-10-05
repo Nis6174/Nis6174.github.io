@@ -1,9 +1,3 @@
-// サイトのルートURLを main.js の位置から求める
-// main.js は assets/js/ 配下にあるため、2階層上がサイトルートになる
-// どのページ（index.html / posts/index.html など）から読み込んでも同じ結果になる
-// ※ document.currentScript はスクリプトの初回実行中のみ参照できるため、ここで取得しておく
-const SITE_ROOT = new URL('../../', document.currentScript.src);
-
 // セキュリティ: XSS対策のためのサニタイズ関数
 function sanitizeHTML(str) {
     const temp = document.createElement('div');
@@ -61,10 +55,15 @@ function createPostCard(post) {
     article.className = 'post-card';
     
     const link = document.createElement('a');
-    link.href = new URL(`posts/${encodeURIComponent(post.filename)}`, SITE_ROOT).href;
+    const currentPath = window.location.pathname;
+    const postPath = currentPath.includes('/posts/')
+        ? post.filename
+        : `posts/${post.filename}`;
+
+    link.href = postPath;
     link.style.textDecoration = 'none';
     link.style.color = 'inherit';
-    
+
     // セキュリティ: 外部リンクではないためrel属性は不要
     const meta = document.createElement('div');
     meta.className = 'post-meta';
