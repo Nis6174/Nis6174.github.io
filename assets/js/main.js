@@ -13,7 +13,7 @@ const posts = [
         date: "2025-12-16",
         excerpt: "React Server Componentsの重大な脆弱性React2Shellについて、隔離環境での検証結果と独自テストの結果をまとめました。",
         tags: ["脆弱性解析", "CVE-2025-55182", "React"],
-        filename: "2025-12-16-react2shell-cve-2025-55182.html"
+        filename: "posts/2025-12-16-react2shell-cve-2025-55182.html"
     }
     // 新しい記事をここに追加していく
 ];
