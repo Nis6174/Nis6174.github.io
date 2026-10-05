@@ -1,3 +1,9 @@
+// 現在のページが posts/ 配下にあるかどうかで、記事へのリンクの組み立て方を切り替える
+// 例:
+//   index.html        (ルート)   -> 記事へは "posts/xxx.html" でアクセス
+//   posts/index.html  (posts配下) -> 記事へは "xxx.html" でアクセス（同一ディレクトリ内）
+const IN_POSTS_DIR = window.location.pathname.includes('/posts/');
+
 // セキュリティ: XSS対策のためのサニタイズ関数
 function sanitizeHTML(str) {
     const temp = document.createElement('div');
@@ -55,7 +61,8 @@ function createPostCard(post) {
     article.className = 'post-card';
     
     const link = document.createElement('a');
-    link.href = `posts/${sanitizeHTML(post.filename)}`;
+    const pathPrefix = IN_POSTS_DIR ? '' : 'posts/';
+    link.href = `${pathPrefix}${encodeURIComponent(post.filename)}`;
     link.style.textDecoration = 'none';
     link.style.color = 'inherit';
     
