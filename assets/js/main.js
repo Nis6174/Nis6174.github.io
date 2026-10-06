@@ -16,6 +16,14 @@ const posts = [
     {
         id: 1,
         title: "React2Shell (CVE-2025-55182) 脆弱性検証記録",
+        date: "2024-11-11",
+        excerpt: "sample post",
+        tags: ["test"],
+        filename: "2024-11-11-sample-post.html"
+    },
+    {
+        id: 2,
+        title: "React2Shell (CVE-2025-55182) 脆弱性検証記録",
         date: "2025-12-16",
         excerpt: "React Server Componentsの重大な脆弱性React2Shellについて、隔離環境での検証結果と独自テストの結果をまとめました。",
         tags: ["脆弱性解析", "CVE-2025-55182", "React"],
