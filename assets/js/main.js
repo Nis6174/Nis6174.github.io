@@ -20,6 +20,14 @@ const posts = [
         excerpt: "React Server Componentsの重大な脆弱性React2Shellについて、隔離環境での検証結果と独自テストの結果をまとめました。",
         tags: ["脆弱性解析", "CVE-2025-55182", "React"],
         filename: "2025-12-16-react2shell-cve-2025-55182.html"
+    },
+    {
+        id: 2,
+        title: "PHP2Shell (CVE-2026-109618 / CVE-2026-109619) 脆弱性検証記録",
+        date: "2026-10-22",
+        excerpt: "PHP Server Componentsの重大な脆弱性PHP2Shellについて、隔離環境での検証結果と独自テストの結果をまとめました。",
+        tags: ["脆弱性解析", "CVE-2026-109618", "CVE-2026-109619", "PHP"],
+        filename: "2026-10-22-php2shell-cve-2026-109618-cve-2026-109619.html"
     }
     // 新しい記事をここに追加していく
 ];
