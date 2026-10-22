@@ -27,7 +27,7 @@ const posts = [
         date: "2026-10-22",
         excerpt: "PHP Server Componentsの重大な脆弱性PHP2Shellについて、隔離環境での検証結果と独自テストの結果をまとめました。",
         tags: ["脆弱性解析", "CVE-2026-109618", "CVE-2026-109619", "PHP"],
-        filename: "2026-10-22-php2shell-cve-2026-109618-cve-2026-109619.html"
+        filename: "2026-10-22-php2shell-cve-2026-109618-109619.html"
     }
     // 新しい記事をここに追加していく
 ];
