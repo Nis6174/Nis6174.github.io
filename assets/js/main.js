@@ -11,29 +11,33 @@ function sanitizeHTML(str) {
     return temp.innerHTML;
 }
 
-// 記事データの定義（実際のブログ記事を追加していく）
-const posts = [
-    {
-        id: 1,
-        title: "React2Shell (CVE-2025-55182) 脆弱性検証記録",
-        date: "2025-12-16",
-        excerpt: "React Server Componentsの重大な脆弱性React2Shellについて、隔離環境での検証結果と独自テストの結果をまとめました。",
-        tags: ["脆弱性解析", "CVE-2025-55182", "React"],
-        filename: "2025-12-16-react2shell-cve-2025-55182.html"
-    },
-    {
-        id: 2,
-        title: "PHP2Shell (CVE-2026-109618 / CVE-2026-109619) 脆弱性検証記録",
-        date: "2026-10-22",
-        excerpt: "PHP Server Componentsの重大な脆弱性PHP2Shellについて、隔離環境での検証結果と独自テストの結果をまとめました。",
-        tags: ["脆弱性解析", "CVE-2026-109618", "CVE-2026-109619", "PHP"],
-        filename: "2026-10-22-php2shell-cve-2026-109618-109619.html"
+// 記事データは、ビルド時に生成される assets/data/posts.json から読み込む。
+// （Markdown記事は content/posts/、既存のHTML記事は content/legacy-posts.json が元データ）
+// 現在のページの階層に合わせて、JSONへの相対パスを組み立てる。
+const POSTS_JSON_URL = IN_POSTS_DIR ? '../assets/data/posts.json' : 'assets/data/posts.json';
+
+async function loadPosts() {
+    const response = await fetch(POSTS_JSON_URL, { headers: { 'Accept': 'application/json' } });
+    if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
     }
-    // 新しい記事をここに追加していく
-];
+    const data = await response.json();
+    if (!Array.isArray(data)) {
+        throw new Error('posts.json の形式が不正です');
+    }
+    return data;
+}
+
+// 記事一覧の取得に失敗したときの表示
+function showPostsError(container) {
+    const message = document.createElement('p');
+    message.className = 'post-excerpt';
+    message.textContent = '記事一覧を読み込めませんでした。時間をおいて再読み込みしてください。';
+    container.appendChild(message);
+}
 
 // トップページの最新記事表示
-function displayLatestPosts() {
+function displayLatestPosts(posts) {
     const container = document.getElementById('latestPosts');
     if (!container) return;
 
@@ -50,7 +54,7 @@ function displayLatestPosts() {
 }
 
 // 記事一覧ページの全記事表示
-function displayAllPosts() {
+function displayAllPosts(posts) {
     const container = document.getElementById('allPosts');
     if (!container) return;
 
@@ -145,11 +149,22 @@ function secureExternalLinks() {
 
 // ページ読み込み時の初期化
 document.addEventListener('DOMContentLoaded', function() {
-    // 最新記事の表示（トップページ）
-    displayLatestPosts();
-    
-    // 全記事の表示（記事一覧ページ）
-    displayAllPosts();
+    // 記事一覧が必要なページ（トップ・記事一覧）だけ posts.json を読み込む
+    const latestContainer = document.getElementById('latestPosts');
+    const allContainer = document.getElementById('allPosts');
+    if (latestContainer || allContainer) {
+        loadPosts()
+            .then(posts => {
+                // 最新記事の表示（トップページ）
+                displayLatestPosts(posts);
+                // 全記事の表示（記事一覧ページ）
+                displayAllPosts(posts);
+            })
+            .catch(() => {
+                if (latestContainer) showPostsError(latestContainer);
+                if (allContainer) showPostsError(allContainer);
+            });
+    }
     
     // ナビゲーションのアクティブ状態設定
     setActiveNavLink();
@@ -175,7 +190,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // エクスポート（他のファイルから使用する場合）
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
-        sanitizeHTML,
-        posts
+        sanitizeHTML
     };
 }

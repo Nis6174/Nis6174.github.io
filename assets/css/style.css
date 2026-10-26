@@ -321,6 +321,116 @@ body {
     border-bottom-color: var(--color-primary);
 }
 
+/* ===== 記事コンテンツ（Markdown記事で追加で使う要素） ===== */
+.article-content h4 {
+    color: var(--color-sub-bg);
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+}
+
+.article-content blockquote {
+    border-left: 4px solid var(--color-sub-bg);
+    background-color: var(--color-bg-main);
+    padding: 0.75rem 1.25rem;
+    margin: 0 0 1.25rem;
+    border-radius: 0 6px 6px 0;
+}
+
+.article-content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.article-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 1.25rem;
+}
+
+.article-content hr {
+    border: none;
+    border-top: 1px solid var(--color-bg-main);
+    margin: 2rem 0;
+}
+
+.article-content table {
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    margin-bottom: 1.25rem;
+}
+
+.article-content th,
+.article-content td {
+    border: 1px solid var(--color-bg-main);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+}
+
+.article-content th {
+    background-color: var(--color-bg-main);
+}
+
+/* コードのシンタックスハイライト（ビルド時に highlight.js が付与するクラス） */
+.hljs-comment,
+.hljs-quote {
+    color: #4a4a4a;
+    font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-doctag {
+    color: #000371;
+    font-weight: bold;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition {
+    color: #14572a;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-symbol,
+.hljs-bullet {
+    color: #7a2e00;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-function .hljs-title {
+    color: #1d4f91;
+}
+
+.hljs-built_in,
+.hljs-type,
+.hljs-class .hljs-title {
+    color: #5b2a86;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-params {
+    color: #6b3d00;
+}
+
+.hljs-deletion {
+    color: #8a1c1c;
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}
+
 /* ===== フッター ===== */
 .footer {
     background-color: var(--color-primary);
